@@ -23,6 +23,7 @@ Public Class CreateSubmissionForm
     End Sub
 
     Private Async Sub btnSubmit_Click(sender As Object, e As EventArgs) Handles btnSubmit.Click
+
         Dim submission = New With {
             .name = txtName.Text,
             .email = txtEmail.Text,
@@ -30,8 +31,6 @@ Public Class CreateSubmissionForm
             .github_link = txtGithubRepo.Text,
             .stopwatch_time = txtStopwatchTime.Text
         }
-
-        MessageBox.Show($"Name: {txtName.Text}, Email: {txtEmail.Text}, Phone: {txtPhone.Text}, GitHub Link: {txtGithubRepo.Text}, Stopwatch Time: {txtStopwatchTime.Text}")
 
         Dim json = JsonConvert.SerializeObject(submission)
         Dim data = New StringContent(json, Encoding.UTF8, "application/json")
