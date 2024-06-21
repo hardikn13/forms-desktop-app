@@ -20,7 +20,7 @@ Partial Class CreateSubmissionForm
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
         Label6 = New Label()
@@ -78,7 +78,7 @@ Partial Class CreateSubmissionForm
         ' btnSubmit
         ' 
         btnSubmit.BackColor = Color.Turquoise
-        btnSubmit.Font = New Font("Segoe UI", 11F)
+        btnSubmit.Font = New Font("Segoe UI", 11.0F)
         btnSubmit.Location = New Point(275, 354)
         btnSubmit.Name = "btnSubmit"
         btnSubmit.Size = New Size(284, 58)
@@ -89,7 +89,7 @@ Partial Class CreateSubmissionForm
         ' btnStopwatch
         ' 
         btnStopwatch.BackColor = Color.Gold
-        btnStopwatch.Font = New Font("Segoe UI", 11F)
+        btnStopwatch.Font = New Font("Segoe UI", 11.0F)
         btnStopwatch.Location = New Point(114, 291)
         btnStopwatch.Name = "btnStopwatch"
         btnStopwatch.Size = New Size(361, 34)
@@ -147,7 +147,7 @@ Partial Class CreateSubmissionForm
         ' 
         ' CreateSubmissionForm
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(800, 450)
         Controls.Add(Label6)
