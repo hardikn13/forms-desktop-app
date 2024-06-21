@@ -8,8 +8,12 @@ Public Class ViewSubmissionsForm
     Private Async Sub ViewSubmissionsForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Get the total number of submissions initially
         Await GetTotalSubmissions()
-        ' Load the initial submission
-        Await LoadSubmission(currentIndex)
+        ' Load the initial submission if there are any
+        If totalSubmissions > 0 Then
+            Await LoadSubmission(currentIndex)
+        Else
+            ClearSubmissionDisplay()
+        End If
     End Sub
 
     Private Async Function GetTotalSubmissions() As Task
@@ -53,8 +57,16 @@ Public Class ViewSubmissionsForm
             TextBox4.Text = submission.Github_Link
             TextBox5.Text = submission.Stopwatch_Time
         Else
-            MessageBox.Show("Submission is null.")
+            ClearSubmissionDisplay()
         End If
+    End Sub
+
+    Private Sub ClearSubmissionDisplay()
+        TextBox1.Text = String.Empty
+        TextBox2.Text = String.Empty
+        TextBox3.Text = String.Empty
+        TextBox4.Text = String.Empty
+        TextBox5.Text = String.Empty
     End Sub
 
     Private Async Sub btnPrevious_Click(sender As Object, e As EventArgs) Handles btnPrevious.Click
@@ -68,6 +80,35 @@ Public Class ViewSubmissionsForm
         If currentIndex < totalSubmissions - 1 Then
             currentIndex += 1
             Await LoadSubmission(currentIndex)
+        End If
+    End Sub
+
+    Private Async Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
+        If MessageBox.Show("Are you sure you want to delete this submission?", "Confirm Delete", MessageBoxButtons.YesNo) = DialogResult.Yes Then
+            Using client As New HttpClient()
+                Try
+                    Dim response = Await client.DeleteAsync($"http://localhost:3000/delete?index={currentIndex}")
+                    If response.IsSuccessStatusCode Then
+                        MessageBox.Show("Submission deleted successfully!")
+                        ' Refresh the total number of submissions
+                        Await GetTotalSubmissions()
+                        ' Adjust current index if necessary
+                        If currentIndex >= totalSubmissions Then
+                            currentIndex = Math.Max(0, totalSubmissions - 1)
+                        End If
+                        ' Load the new submission at the current index or clear the display if none left
+                        If totalSubmissions > 0 Then
+                            Await LoadSubmission(currentIndex)
+                        Else
+                            ClearSubmissionDisplay()
+                        End If
+                    Else
+                        MessageBox.Show($"Failed to delete submission. Status Code: {response.StatusCode}")
+                    End If
+                Catch ex As Exception
+                    MessageBox.Show($"Error: {ex.Message}")
+                End Try
+            End Using
         End If
     End Sub
 End Class

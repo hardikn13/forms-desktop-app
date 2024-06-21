@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class ViewSubmissionsForm
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class ViewSubmissionsForm
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         txtName = New Label()
         txtEmail = New Label()
@@ -29,6 +29,7 @@ Partial Class ViewSubmissionsForm
         txtStopwatchTime = New Label()
         btnPrevious = New Button()
         btnNext = New Button()
+        btnDelete = New Button()
         TextBox1 = New TextBox()
         TextBox2 = New TextBox()
         TextBox3 = New TextBox()
@@ -85,10 +86,10 @@ Partial Class ViewSubmissionsForm
         ' btnPrevious
         ' 
         btnPrevious.BackColor = Color.Gold
-        btnPrevious.Font = New Font("Segoe UI", 11F)
+        btnPrevious.Font = New Font("Segoe UI", 11.0F)
         btnPrevious.Location = New Point(124, 344)
         btnPrevious.Name = "btnPrevious"
-        btnPrevious.Size = New Size(284, 58)
+        btnPrevious.Size = New Size(139, 58)
         btnPrevious.TabIndex = 5
         btnPrevious.Text = "&PREVIOUS (CTRL + P)"
         btnPrevious.UseVisualStyleBackColor = False
@@ -96,13 +97,24 @@ Partial Class ViewSubmissionsForm
         ' btnNext
         ' 
         btnNext.BackColor = Color.Turquoise
-        btnNext.Font = New Font("Segoe UI", 11F)
-        btnNext.Location = New Point(413, 344)
+        btnNext.Font = New Font("Segoe UI", 11.0F)
+        btnNext.Location = New Point(581, 344)
         btnNext.Name = "btnNext"
-        btnNext.Size = New Size(284, 58)
+        btnNext.Size = New Size(116, 58)
         btnNext.TabIndex = 6
         btnNext.Text = "&NEXT (CTRL + N)"
         btnNext.UseVisualStyleBackColor = False
+        ' 
+        ' btnDelete
+        ' 
+        btnDelete.BackColor = Color.Tomato
+        btnDelete.Font = New Font("Segoe UI", 11.0F)
+        btnDelete.Location = New Point(280, 344)
+        btnDelete.Name = "btnDelete"
+        btnDelete.Size = New Size(284, 58)
+        btnDelete.TabIndex = 13
+        btnDelete.Text = "&DELETE (CTRL + D)"
+        btnDelete.UseVisualStyleBackColor = False
         ' 
         ' TextBox1
         ' 
@@ -155,9 +167,10 @@ Partial Class ViewSubmissionsForm
         ' 
         ' ViewSubmissionsForm
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(800, 450)
+        ClientSize = New Size(800, 500)
+        Controls.Add(btnDelete)
         Controls.Add(Label6)
         Controls.Add(TextBox5)
         Controls.Add(TextBox4)
@@ -184,6 +197,7 @@ Partial Class ViewSubmissionsForm
     Friend WithEvents txtStopwatchTime As Label
     Friend WithEvents btnPrevious As Button
     Friend WithEvents btnNext As Button
+    Friend WithEvents btnDelete As Button
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents TextBox2 As TextBox
     Friend WithEvents TextBox3 As TextBox
